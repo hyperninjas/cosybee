@@ -81,6 +81,34 @@ If you hit a port conflict (`EADDRINUSE: 3000`), adjust one app’s port via env
   pnpm release
   ```
 
+## Git hooks (Husky) & Commitlint
+
+- **Hooks installation**: hooks are installed on `pnpm install` via the root `prepare` script (`husky install`).
+- **Pre-commit**: runs `pnpm run lint`, which fans out to `apps/clinet` and `apps/server` lint scripts.
+- **Commit message check**: `commit-msg` runs Conventional Commits via Commitlint.
+
+### Conventional commit examples
+
+```text
+feat: add homepage hero
+fix(server): handle missing env var
+chore(clinet): update eslint config
+docs: update README
+```
+
+### Manual commit message check
+
+```bash
+echo "feat: something" | pnpm exec commitlint
+pnpm exec commitlint --edit .git/COMMIT_EDITMSG
+```
+
+### Bypass hooks (not recommended)
+
+```bash
+git commit -m "wip: temp" --no-verify
+```
+
 Notes:
 - Packages in `apps/` are `"private": true` and will not be published.
 - Initialize git and ensure your default branch is `main` to match Changesets baseBranch.

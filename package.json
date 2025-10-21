@@ -12,18 +12,23 @@
     "start:server": "pnpm --filter server start",
     "lint:clinet": "pnpm --filter clinet lint",
     "lint:server": "pnpm --filter server lint",
+    "lint": "pnpm -r --filter server --filter clinet run lint",
     "dev": "pnpm -r --parallel --filter server --filter clinet run dev",
     "build": "pnpm -r --parallel --filter server --filter clinet run build",
     "start": "pnpm -r --parallel --filter server --filter clinet run start",
     "changeset": "changeset",
     "version-packages": "changeset version && pnpm install --lockfile-only",
-    "release": "pnpm -r build && changeset publish"
+    "release": "pnpm -r build && changeset publish",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.16.1",
   "devDependencies": {
-    "@changesets/cli": "^2.29.7"
+    "@changesets/cli": "^2.29.7",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "husky": "^9.1.7"
   }
 }

@@ -16,6 +16,7 @@
     "dev": "pnpm -r --parallel --filter server --filter clinet run dev",
     "build": "pnpm -r --parallel --filter server --filter clinet run build",
     "start": "pnpm -r --parallel --filter server --filter clinet run start",
+    "nest:server": "pnpm --filter server exec nest",
     "changeset": "changeset",
     "version-packages": "changeset version && pnpm install --lockfile-only",
     "release": "pnpm -r build && changeset publish",

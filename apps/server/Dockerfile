@@ -3,7 +3,7 @@
 # Follow pnpm monorepo best practices: use slim image, BuildKit cache, and pnpm deploy
 
 # ---------- Base ----------
-FROM node:22-slim AS base
+FROM node:22-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -19,9 +19,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/server/package.json apps/server/package.json
 
 # Install deps with cache (workspace context)
-ARG PNPM_FLAGS=""
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
-  pnpm install --frozen-lockfile $PNPM_FLAGS
+  pnpm install --frozen-lockfile
 
 # Copy only the server workspace sources
 COPY apps/server/ apps/server/
@@ -33,7 +32,7 @@ RUN pnpm --filter=server run build
 RUN pnpm deploy --filter=server --prod /prod/server
 
 # ---------- Runtime ----------
-FROM node:22-slim AS runner
+FROM node:22-alpine AS runner
 ENV NODE_ENV=production
 WORKDIR /app
 

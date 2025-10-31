@@ -8,15 +8,18 @@ import { HttpModule } from '@nestjs/axios';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { TerminusModule } from '@nestjs/terminus';
 import { HealthController } from './health/health.controller';
+import { AuthModule } from '@thallesp/nestjs-better-auth';
+import { auth } from '../auth';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.local', '.env.production'],
+      envFilePath: ['.env', '.env.production'],
       load: [configuration],
       cache: true,
       isGlobal: true,
     }),
+    AuthModule.forRoot({ auth }),
     CacheModule.register({
       ttl: 60 * 60 * 1000,
       max: 100,

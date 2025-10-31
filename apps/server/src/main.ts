@@ -12,6 +12,7 @@ import {
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
+    bodyParser: false,
     logger: ['log', 'error', 'warn', 'debug', 'fatal'],
   });
   const configService = app.get(ConfigService);
@@ -20,7 +21,26 @@ async function bootstrap() {
   const openapiConfig = configService.get<OpenapiConfiguration>('openapi')!;
 
   app.use(compression());
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'default-src': ["'self'", 'https://cdn.jsdelivr.net'],
+          'script-src': [
+            "'self'",
+            "'unsafe-inline'",
+            'https://cdn.jsdelivr.net',
+          ],
+          'connect-src': [
+            "'self'",
+            'https://cdn.jsdelivr.net',
+            'http://localhost:3000',
+          ],
+        },
+      },
+    }),
+  );
   app.enableCors({
     origin: corsConfig.origins,
     credentials: corsConfig.credentials,
@@ -48,6 +68,7 @@ async function bootstrap() {
     .setDescription(openapiConfig.description)
     .setVersion(openapiConfig.version)
     .build();
+
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 

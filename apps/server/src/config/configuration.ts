@@ -12,6 +12,14 @@ export type Configuration = {
     version: string;
     enabled: boolean;
   };
+  auth: {
+    betterAuthSecret: string;
+    betterAuthUrl: string;
+  };
+  stripe: {
+    secretKey: string;
+    webhookSecret: string;
+  };
   database: {
     host: string;
     port: number;
@@ -19,11 +27,16 @@ export type Configuration = {
     password: string;
     database: string;
   };
+  google: {
+    clientId: string;
+    clientSecret: string;
+  };
 };
 
 export type DatabaseConfiguration = Configuration['database'];
 export type CorsConfiguration = Configuration['cors'];
 export type OpenapiConfiguration = Configuration['openapi'];
+export type AuthConfiguration = Configuration['auth'];
 
 export default () =>
   ({
@@ -39,6 +52,18 @@ export default () =>
       description: process.env.OPENAPI_DESCRIPTION!,
       version: process.env.OPENAPI_VERSION!,
       enabled: Boolean(process.env.OPENAPI_ENABLED),
+    },
+    auth: {
+      betterAuthSecret: process.env.BETTER_AUTH_SECRET!,
+      betterAuthUrl: process.env.BETTER_AUTH_URL!,
+    },
+    stripe: {
+      secretKey: process.env.STRIPE_SECRET_KEY!,
+      webhookSecret: process.env.STRIPE_WEBHOOK_SECRET!,
+    },
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     },
     database: {
       host: process.env.DATABASE_HOST!,

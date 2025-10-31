@@ -110,12 +110,13 @@ git commit -m "wip: temp" --no-verify
 ```
 
 Notes:
+
 - Packages in `apps/` are `"private": true` and will not be published.
 - Initialize git and ensure your default branch is `main` to match Changesets baseBranch.
 
 ## Project Structure
 
-```
+```bash
 apps/
   clinet/
   server/

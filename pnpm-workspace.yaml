@@ -1,12 +1,17 @@
 packages:
   - apps/*
 
+injectWorkspacePackages: true
+
 onlyBuiltDependencies:
+  - '@firebase/util'
   - '@nestjs/core'
+  - '@prisma/client'
+  - '@prisma/engines'
+  - prisma
+  - protobufjs
   - sharp
   - unrs-resolver
 
-# Enable pnpm v10 monorepo-friendly deploy behavior
-injectWorkspacePackages: true
 syncInjectedDepsAfterScripts:
   - build

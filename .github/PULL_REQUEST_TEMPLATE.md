@@ -19,6 +19,6 @@
 - [ ] PR title is semantic (e.g., feat: add X, fix: correct Y)
 - [ ] Linked issue (Fixes #ID)
 - [ ] Lint passes locally (pnpm lint)
-- [ ] Tests pass locally (server: pnpm --filter server test)
+- [ ] Build pass locally (server: pnpm --filter server test)
 - [ ] Includes migrations or schema changes (if any) documented
 - [ ] Updated docs/changelog if needed

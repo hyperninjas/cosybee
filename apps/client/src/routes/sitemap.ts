@@ -34,7 +34,7 @@ const sitemap: MenuItem[] = [
       {
         name: 'E-commerce',
         key: 'e_commerce',
-        path: paths[404],
+        path: paths.comingSoon,
         pathName: 'e-commerce',
         icon: 'material-symbols:shopping-cart-outline',
         active: true,

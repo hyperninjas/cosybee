@@ -1,4 +1,4 @@
-import Account from '../../../components/sections/account';
+import Account from '../../../../components/sections/account';
 
 const Page = () => {
   return <Account />;

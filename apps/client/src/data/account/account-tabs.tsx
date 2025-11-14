@@ -14,8 +14,8 @@ export const accountTabs: AccountTab[] = [
   },
   {
     id: 12,
-    label: 'Fingerprint Access Setup',
-    title: 'Fingerprint Access Setup',
+    label: 'Configure MFA',
+    title: 'Configure MFA',
     value: 'touch_id',
     icon: 'material-symbols:touch-app-outline',
     panelIcon: 'material-symbols:touch-app-outline',

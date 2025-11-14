@@ -7,15 +7,15 @@ const TouchIDTabPanel = () => {
   return (
     <Stack direction="column" divider={<Divider />} spacing={5}>
       <AccountTabPanelSection
-        title="Touch ID"
-        subtitle="Touch ID enables quick login, secure payments, autofill, and seamless user switching for a convenient experience."
+        title="Passkey"
+        subtitle="Passkey enables for quick login with secure biometric authentication methods like Touch ID."
         icon="material-symbols:lock-person-outline"
       >
         <Biometrics />
       </AccountTabPanelSection>
       <AccountTabPanelSection
-        title="Touch ID Features & Settings"
-        subtitle="Enable Touch ID for secure login, payments, autofill, and switching users."
+        title="Two Factor Authentication"
+        subtitle="Enable two-factor authentication to add an extra layer of security to your account."
         icon="material-symbols:lock-clock-outline"
       >
         <TouchIdFeatures />

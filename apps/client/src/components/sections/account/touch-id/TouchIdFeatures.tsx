@@ -9,26 +9,11 @@ const TouchIdFeatures = () => {
         sx={{ gap: 2, alignItems: 'flex-start' }}
       >
         <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-          Manage Touch ID Features
+          Manage 2FA Features
         </Typography>
         <FormControlLabel
           control={<Switch defaultChecked />}
           label="Use Touch ID to unlock your login page"
-          sx={{ gap: 2, ml: 0 }}
-        />
-        <FormControlLabel
-          control={<Switch defaultChecked />}
-          label="Use Touch ID for online payment"
-          sx={{ gap: 2, ml: 0 }}
-        />
-        <FormControlLabel
-          control={<Switch defaultChecked />}
-          label="Use Touch ID for Autofilling passwords"
-          sx={{ gap: 2, ml: 0 }}
-        />
-        <FormControlLabel
-          control={<Switch />}
-          label="Use Touch ID for fast user switching"
           sx={{ gap: 2, ml: 0 }}
         />
       </FormControl>

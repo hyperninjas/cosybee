@@ -60,12 +60,12 @@ async function bootstrap() {
     }),
   );
   console.log(corsConfig);
-  
+
   app.enableCors({
     origin: corsConfig.origins,
     methods: corsConfig.methods,
     allowedHeaders: corsConfig.allowedHeaders,
-    credentials: true
+    credentials: true,
   });
   app.useGlobalPipes(
     new ValidationPipe({
@@ -98,7 +98,7 @@ async function bootstrap() {
       const document = documentFactory();
       const jsonDoc = JSON.stringify(document, null, 2);
       const filename = openapiConfig.filename;
-      
+
       // Resolve path from dist folder to client openapi directory
       // apps/server/dist -> ../../client/openapi
       const clientOutDir = path.resolve(__dirname, '../../client/openapi');

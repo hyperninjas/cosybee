@@ -47,13 +47,23 @@ export default () => {
   const credentials = Boolean(process.env.CORS_CREDENTIALS);
 
   // Sanitize wildcards if credentials are true (browser requirement)
-  const origins = (credentials && rawOrigins.includes('*'))
-    ? ['http://localhost:3000', 'http://localhost:3001']
-    : rawOrigins;
+  const origins =
+    credentials && rawOrigins.includes('*')
+      ? ['http://localhost:3000', 'http://localhost:3001']
+      : rawOrigins;
 
-  const allowedHeaders = (credentials && rawHeaders.includes('*'))
-    ? ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With', 'sentry-trace', 'baggage']
-    : rawHeaders;
+  const allowedHeaders =
+    credentials && rawHeaders.includes('*')
+      ? [
+          'Content-Type',
+          'Authorization',
+          'Accept',
+          'Origin',
+          'X-Requested-With',
+          'sentry-trace',
+          'baggage',
+        ]
+      : rawHeaders;
 
   return {
     port: parseInt(process.env.PORT!, 10) || 4000,
